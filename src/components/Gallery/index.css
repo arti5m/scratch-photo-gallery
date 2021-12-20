@@ -6,3 +6,26 @@
   margin: 0;
   padding: 0;
 }
+
+.image-gallery__header {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-gallery__search {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+} 
+
+.image-gallery__search label {
+  margin: 0;
+}
+
+.image-gallery__wrapper {
+  display: grid;
+  grid-gap: 2rem;
+}
+

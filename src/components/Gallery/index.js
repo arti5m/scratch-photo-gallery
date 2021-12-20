@@ -56,8 +56,15 @@ function Gallery() {
   return (
     <nav className="image-gallery__wrapper">
       <div className="image-gallery__header">
+        <div className="image-gallery__search">
+          <label for="gallery-search">Search by Author: </label>
+          <input 
+            id="gallery-search" 
+            onChange={filterResults} 
+            placeholder="Search"
+          />
+        </div>
         <output>Selected Images: {state.selectedTotal}</output>
-        <input onChange={filterResults}></input>
       </div>
       <ul className="image-gallery">
         {

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { picsumResize } from '../../utils';
 import "./index.css";
 
 const IMAGE_DIMENSIONS = {
@@ -8,10 +9,11 @@ const IMAGE_DIMENSIONS = {
 };
 
 const ImageCard = ({ data }) => {
-  const thumbnailSrc = data.download_url.replace(
-    /\d+\/\d+$/, 
-    `${IMAGE_DIMENSIONS.x}/${IMAGE_DIMENSIONS.y}`
-  );
+  const thumbnailSrc = picsumResize({
+    url: data.download_url,
+    x: IMAGE_DIMENSIONS.x,
+    y: IMAGE_DIMENSIONS.y
+  });
   return (
     <figure className={`image-card ${data.isSelected ? 'is-selected' : 'is-not-selected'}`}>
       <img 
