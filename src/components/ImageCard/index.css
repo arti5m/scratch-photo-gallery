@@ -1,0 +1,20 @@
+  
+.image-card {
+  display: grid;
+  grid-gap: 0.25rem;
+  margin: 0;
+}
+
+.image-card.is-selected {
+  outline: 5px solid limegreen;
+}
+
+.image-card__thumbnail {
+  width: 100%;
+  height: auto;
+}
+
+.image-card__caption {
+  padding-inline-start: 0.5rem;
+  padding-inline-end: 0.5rem;
+}

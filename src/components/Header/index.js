@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react';
 import { Link } from "react-router-dom";
 
-export function Header() {
+import './index.css';
+
+const Header = () => {
   return (
     <header>
       <Link to="/">
@@ -10,3 +12,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;

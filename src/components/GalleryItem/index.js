@@ -1,8 +1,9 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 
-export function GalleryItem() {
+const GalleryItem = () => {
   const { id } = useParams();
 
   return <div>Render the image with id: {id}</div>;
-}
+};
+
+export default GalleryItem;
