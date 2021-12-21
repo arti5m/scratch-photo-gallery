@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useCallback, useState} from "react";
+import React, { useContext, useCallback, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "./index.css";
@@ -57,7 +57,7 @@ function Gallery() {
     <nav className="image-gallery__wrapper">
       <div className="image-gallery__header">
         <div className="image-gallery__search">
-          <label for="gallery-search">Search by Author: </label>
+          <label htmlFor="gallery-search">Search by Author: </label>
           <input 
             id="gallery-search" 
             onChange={filterResults} 

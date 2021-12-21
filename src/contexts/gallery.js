@@ -16,6 +16,35 @@ export const GALLERY_ACTIONS = {
   UPDATE_SELECTED: 'UPDATE_SELECTED'
 };
 
+const setSelectedImages = ({state, action}) => {
+  let newState = { ...state };
+  const selectedTotal = newState.selectedTotal;
+  let selectedIndex;
+  let selectedImage = newState.images.find((el, index ) => {
+    if (el.id === action.payload.id) {
+      selectedIndex = index;
+    }
+    return el.id === action.payload.id;
+  });
+
+  selectedImage = {
+    ...selectedImage,
+    isSelected: !selectedImage.isSelected
+  };
+
+  newState.images[selectedIndex] = selectedImage;
+
+  newState = {
+    ...newState,
+    selectedTotal: selectedImage.isSelected ? 
+      selectedTotal + 1 : 
+      selectedTotal - 1
+  };
+
+  return newState;
+};
+
+
 const galleryReducer = (state, action) => {
   switch (action.type) {
     case GALLERY_ACTIONS.FETCH_SUCCESS:
@@ -38,26 +67,7 @@ const galleryReducer = (state, action) => {
         error: 'There was a problem loading images...'
       };
     case GALLERY_ACTIONS.UPDATE_SELECTED:
-      const newState = {...state};
-      let selectedIndex;
-      const selectedImage = newState.images.find((el, index ) => {
-        if (el.id === action.payload.id) {
-          selectedIndex = index;
-        }
-        return el.id === action.payload.id;
-      });
-      const isSelected = !selectedImage.isSelected;
-
-      newState.images[selectedIndex] = {
-        ...selectedImage,
-        isSelected
-      };
-
-      // Increment/decrement selectedTotal
-      isSelected ? 
-        newState.selectedTotal++ : 
-        newState.selectedTotal--;
-      
+      const newState = setSelectedImages({state, action});
       return newState;
     default: 
       return state;
@@ -80,7 +90,6 @@ export const GalleryProvider = (props) => {
           });
         },
         (error) => {
-          console.log('Error:', error);
           dispatch({
             type: GALLERY_ACTIONS.FETCH_ERROR
           });
